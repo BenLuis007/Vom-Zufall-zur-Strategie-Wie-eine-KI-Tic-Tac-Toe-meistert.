@@ -7,7 +7,6 @@ aktivierungsfunktion_outp = ReLU
 ableitung_hidden = ableitung_sigmoid
 ableitung_outp = ableitung_ReLU
 
-
 oben_links = [[0,1,1,0,0,0,0,0,0], [0,0,0,0,1,0,0,0,1], [0,0,0,1,0,0,1,0,0]]
 oben_mitte = [[1,0,1,0,0,0,0,0,0], [0,0,0,0,1,0,0,1,0]]
 oben_rechts = [[1,1,0,0,0,0,0,0,0], [0,0,0,0,1,0,1,0,0], [0,0,0,0,0,1,0,0,1]]
