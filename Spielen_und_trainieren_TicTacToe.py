@@ -8,7 +8,6 @@ aktivierungsfunktion_outp = ReLU
 ableitung_hidden = ableitung_sigmoid
 ableitung_outp = ableitung_ReLU
 
-      
 def spiel_KI_gegen_KI(KI1, KI2, anzahl_spiele): #KI spielt gegen eine andere KI, beide werden dabei trainiert
     s = Spiel(KI1, KI2)
     for i in range(anzahl_spiele):
@@ -22,7 +21,6 @@ def spiel_KI_gegen_KI(KI1, KI2, anzahl_spiele): #KI spielt gegen eine andere KI,
             print(spielstand)
     print("von", anzahl_spiele, "spielen", s.wie_viel_gewonnen, "gewonnen und", s.wie_viel_verloren, "verloren und", s.wie_viel_unentschieden, "unentschieden")
 
-
 def spiel_KI_gegen_zufall(KI1, anzahl_spiele, spielerwert): #KI spielt gegen den Zufall und wird nach jedem Spiel trainiert
     s = Spiel(KI1, KI1)
     for i in range(anzahl_spiele):
@@ -31,14 +29,11 @@ def spiel_KI_gegen_zufall(KI1, anzahl_spiele, spielerwert): #KI spielt gegen den
         KI1.trainieren(bewertung[0], bewertung[1], bewertung[2], ableitung_hidden, ableitung_outp)  
     print("von", anzahl_spiele, "spielen", s.wie_viel_gewonnen, "gewonnen und", s.wie_viel_verloren, "verloren und", s.wie_viel_unentschieden, "unentschieden")
     
-    
 def spiel_KI_gegen_Mensch(KI1, anzahl_spiele): #KI spielt ein Spiel gegen de Mensch, ohne dabei trainiert zu weden
     s = Spiel(KI1,KI1)
     for i in range(anzahl_spiele):
         s.spiel_gegen_mensch(KI1, False)
         
-
-
 def datei_speichern(dateinamen):
     desktop_pfad = os.path.join(os.path.expanduser("~"), "Desktop") # speicherort Pfad automatisch herausfinden
     datei_pfad = os.path.join(desktop_pfad, dateinamen)
@@ -62,22 +57,18 @@ def datei_öffnen(dateinamen):
     n_Netz_1.hidden_layer_1 = [Neuron(d["bias"], d["weights"]) for d in geladene_dicts[0]]
     n_Netz_1.hidden_layer_2 = [Neuron(d["bias"], d["weights"]) for d in geladene_dicts[1]]
     n_Netz_1.output_layer = [Neuron(d["bias"], d["weights"]) for d in geladene_dicts[2]]
-      
-       
-
+        
 n_Netz_1 = Neuronales_Netz(9,9,13)
 n_Netz_1.neuronales_Netz_erstellen()
 
 n_Netz_2 = Neuronales_Netz(9,9,9)
 n_Netz_2.neuronales_Netz_erstellen()
 
-
 datei_öffnen("NN_Gewichte_backpropagation")
 
 #2 neuronale Netze werden seperat gegen den Zufall trainiert.
 for i in range(10):
     spiel_KI_gegen_zufall(n_Netz_1, 500, 1)
-    
 for i in range(10):
     spiel_KI_gegen_zufall(n_Netz_2, 500, -1)
 
@@ -90,10 +81,6 @@ spiel_KI_gegen_Mensch(n_Netz_1, 5)
 
 #datei_speichern("NN_Gewichte_backpropagation")
     
-
-
-
-
 '''legende:
 0 = nimand besitzt das Feld
 1 = KI gehört das Feld
@@ -105,5 +92,4 @@ Welche Zahl muss man eingeben um an einem besteimmten Ort zu spielen?
     [0,1,2
      3,4,5
      6,7,8]
-
 '''
